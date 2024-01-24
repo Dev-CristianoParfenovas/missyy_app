@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "66923862451",
+    "project_id": "missyy-175a9",
+    "storage_bucket": "missyy-175a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66923862451:android:09026ec392ad322680d3c6",
+        "android_client_info": {
+          "package_name": "com.example.missyy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjahk8yPgObPLk3il_fMLETmE_lyFXYk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
