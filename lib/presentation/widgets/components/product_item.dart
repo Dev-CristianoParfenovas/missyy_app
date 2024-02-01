@@ -32,9 +32,13 @@ class ProductItem extends StatelessWidget {
                       borderRadius: const BorderRadius.all(
                         Radius.circular(8),
                       ),
-                      child: Image.asset(
-                        product.imageUrl,
-                        fit: BoxFit.cover,
+                      //IMAGEM DO PRODUTO
+                      child: Hero(
+                        tag: product.imageUrl,
+                        child: Image.asset(
+                          product.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -55,6 +59,7 @@ class ProductItem extends StatelessWidget {
                             ),
                           ),
                         ),
+                        //A PARTIR DE
                         const Padding(
                           padding: EdgeInsets.only(top: 1),
                           child: Text(
@@ -65,6 +70,8 @@ class ProductItem extends StatelessWidget {
                             ),
                           ),
                         ),
+
+                        //PREÇO DO PRODUTO
                         Text(
                           utilsServices.priceToCurrency(product.price),
                           style: TextStyle(

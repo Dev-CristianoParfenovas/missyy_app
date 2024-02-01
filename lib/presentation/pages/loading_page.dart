@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:missyy/_core/screen_colors.dart';
-import 'package:missyy/presentation/pages/products_page.dart';
+import 'package:missyy/presentation/pages/base/base_screen.dart';
 import 'auth/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -35,7 +35,7 @@ class _LoadingPageState extends State<LoadingPage> {
         Future.delayed(const Duration(seconds: 3), () {
           Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
-            return const ProductsPage();
+            return const BaseScreen();
           }));
         });
       } else {

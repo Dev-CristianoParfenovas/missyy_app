@@ -17,15 +17,15 @@ final dummyProducts = [
   ),
   Product(
     id: '1',
-    name: 'Bracelete Coração',
+    name: 'Bracelete',
     description: 'Perfeito para o dia a dia',
     price: 53.99,
     imageUrl: 'assets/braceletecoracao.jpg',
   ),
   Product(
     id: '1',
-    name: 'Bracelete Masculino',
-    description: 'assets/Perfeito para o dia a dia',
+    name: 'Bracelete Masc.',
+    description: 'Perfeito para o dia a dia',
     price: 179.00,
     imageUrl: 'assets/braceletemasculino.jpg',
   ),
@@ -37,3 +37,18 @@ final dummyProducts = [
     imageUrl: 'assets/brincoflorazul.jpg',
   ),
 ];
+
+/*List<CartItemModel> cartItems = [
+  CartItemModel(
+    item: ,
+    quantity: 2,
+  ),
+  CartItemModel(
+    item: mango,
+    quantity: 1,
+  ),
+  CartItemModel(
+    item: guava,
+    quantity: 3,
+  ),
+];*/

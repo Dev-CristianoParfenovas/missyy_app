@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:missyy/_core/screen_colors.dart';
 import 'package:missyy/domain/models/user_manager.dart';
 import 'package:missyy/presentation/pages/auth/login.dart';
-import 'package:missyy/presentation/widgets/components/bottom_navigation_menu.dart';
 import 'package:missyy/presentation/widgets/components/category_tile.dart';
 import 'package:missyy/presentation/widgets/components/product_grid.dart';
 
@@ -189,7 +188,7 @@ class _ProductsPage extends State<ProductsPage> {
               child: ProductGrid(_showFavoriteOnly),
             ),
           ),
-          const MenuBottomNavigation(),
+          // const MenuBottomNavigation(),
         ],
       ),
     );

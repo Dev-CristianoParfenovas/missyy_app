@@ -3,7 +3,7 @@ import 'package:missyy/_core/screen_colors.dart';
 import 'package:missyy/domain/models/user_login.dart';
 import 'package:missyy/domain/models/user_manager.dart';
 import 'package:missyy/helpers/validators.dart';
-import 'package:missyy/presentation/pages/products_page.dart';
+import 'package:missyy/presentation/pages/base/base_screen.dart';
 import 'package:missyy/presentation/widgets/components/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:missyy/presentation/pages/auth/tela_cadastro.dart';
@@ -150,11 +150,16 @@ class Login extends StatelessWidget {
                                       );
                                     },
                                     onSuccess: () {
-                                      Navigator.push(
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(builder: (ctx) {
+                                        return const BaseScreen();
+                                      }));
+
+                                      /* Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const ProductsPage()));
+                                                  const ProductsPage()));*/
                                     },
                                   );
                                 }

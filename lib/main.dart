@@ -4,7 +4,8 @@ import 'package:missyy/domain/models/cart.dart';
 import 'package:missyy/domain/models/product_list.dart';
 import 'package:missyy/domain/models/user_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:missyy/presentation/pages/cart_page.dart';
+import 'package:missyy/presentation/pages/base/base_screen.dart';
+import 'package:missyy/presentation/pages/cart/cart_page.dart';
 import 'package:missyy/presentation/pages/loading_page.dart';
 import 'package:missyy/presentation/pages/product_detail_page.dart';
 import 'package:missyy/utils/app_routes.dart';
@@ -40,6 +41,7 @@ void main() async {
       routes: {
         AppRoutes.product_detail: (ctx) => const ProductDetailPage(),
         AppRoutes.cart: (ctx) => const CartPage(),
+        AppRoutes.basescreen: (ctx) => const BaseScreen(),
       },
       debugShowCheckedModeBanner: false,
     ),

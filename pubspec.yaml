@@ -46,6 +46,7 @@ dependencies:
   firebase_core: ^1.10.6 # Recursos Básicos
   firebase_core_platform_interface: 4.5.1
   intl: ^0.17.0
+  fluttertoast: ^8.1.2
 
 dev_dependencies:
   flutter_test:
