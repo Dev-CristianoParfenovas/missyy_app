@@ -15,11 +15,22 @@ class CartTile extends StatefulWidget {
 }
 
 class _CartTileState extends State<CartTile> {
+  final UtilsServices utilsServices = UtilsServices();
+  //final CartItemModel cartItem;
+  // final Product product; //Provider.of<Product>(context, listen: true);
+
+  void removeItemFromCart(Product prodItem) {
+    setState(() {
+      prodItem.removeListener(() {
+        prodItem.name;
+      });
+      utilsServices.showToast(
+          message: '${prodItem.name} removido(a) do carrinho');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, listen: true);
-    final UtilsServices utilsServices = UtilsServices();
-
     return Card(
       margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       elevation: 3,
@@ -77,13 +88,14 @@ class _CartTileState extends State<CartTile> {
                       QuantityWidget(
                         //suffixText: product.unit,
                         value: product.quantity,
-                        //suffixText: ,
+
                         result: (quantity) {
                           setState(() {
                             product.quantity = quantity;
+                            //removeItemFromCart(product);
                           });
                         },
-                        //isRemovable: true,
+                        isRemovable: true,
                       ),
                     ],
                   ),

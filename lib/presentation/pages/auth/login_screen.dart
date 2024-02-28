@@ -3,10 +3,11 @@ import 'package:missyy/_core/screen_colors.dart';
 import 'package:missyy/domain/models/user_login.dart';
 import 'package:missyy/domain/models/user_manager.dart';
 import 'package:missyy/helpers/validators.dart';
+import 'package:missyy/presentation/pages/auth/cad_products_screen.dart';
 import 'package:missyy/presentation/pages/base/base_screen.dart';
 import 'package:missyy/presentation/widgets/components/custom_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:missyy/presentation/pages/auth/tela_cadastro.dart';
+import 'package:missyy/presentation/pages/auth/tela_cadastro_screen.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {
@@ -150,10 +151,17 @@ class Login extends StatelessWidget {
                                       );
                                     },
                                     onSuccess: () {
-                                      Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(builder: (ctx) {
-                                        return const BaseScreen();
-                                      }));
+                                      if (userManager.adminEnable) {
+                                        // Navigator.of(context).pop();
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(builder: (ctx) {
+                                          return CadProducts();
+                                        }));
+                                      } else
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(builder: (ctx) {
+                                          return BaseScreen();
+                                        }));
 
                                       /* Navigator.push(
                                           context,

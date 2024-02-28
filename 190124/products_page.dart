@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:missyy/_core/screen_colors.dart';
 import 'package:missyy/domain/models/user_manager.dart';
-import 'package:missyy/presentation/pages/auth/login.dart';
+import 'package:missyy/presentation/pages/auth/login_screen.dart';
 import 'package:missyy/presentation/widgets/components/product_grid.dart';
 import 'package:provider/provider.dart';
 
@@ -73,7 +73,7 @@ class _ProductsPage extends State<ProductsPage> {
             child: Consumer<UserManager>(builder: (_, userManager, __) {
               return _user != null
                   ? Text(
-                      'Olá, ${userManager.userLogin?.name ?? ''}!',
+                      'Olá, ${userManager.userLogin.name ?? ''}!',
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,

@@ -11,13 +11,22 @@ class UserManager with ChangeNotifier {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  bool get isLoggedIn => user != null;
-  bool _loading = false;
-  bool get loading => _loading;
-  UserLogin? userLogin;
   User? user;
 
+  bool _loading = false;
+  bool get loading => _loading;
+  // UserLogin userLogin = UserLogin(name: '', email: '', password: '');
+
+  UserLogin? userLogin;
+
+  bool get isLoggedIn => userLogin != null;
+
+  set loading(bool value) {
+    _loading = value;
+    notifyListeners();
+  }
+
+  //LOGIN DO USUÁRIO
   Future<void> signIn(
       {required UserLogin userlogin,
       Function? onFail,
@@ -27,12 +36,15 @@ class UserManager with ChangeNotifier {
       final UserCredential authResult = await auth.signInWithEmailAndPassword(
           email: userlogin.email, password: userlogin.password);
 
+      // user = authResult.user;
+
       // await Future.delayed(const Duration(seconds: 2));
 
       //userlogin.id = authResult.user!.uid;
 
       await _loadCurrentUser(firebaseUser: authResult.user);
-      //user = user;
+
+      //user = authResult.user;
 
       onSuccess!();
     } on FirebaseAuthException catch (e) {
@@ -43,6 +55,7 @@ class UserManager with ChangeNotifier {
     loading = false;
   }
 
+  //CRIA USUÁRIO NO BCO FIREBASE
   Future<void> signUp(
       {required UserLogin userlogin,
       Function? onFail,
@@ -69,29 +82,37 @@ class UserManager with ChangeNotifier {
     loading = false;
   }
 
+  //DESLOGAR O USUÁRIO
   void signOut() {
     auth.signOut();
-    user = null;
-    notifyListeners();
-  }
-
-  set loading(bool value) {
-    _loading = value;
+    userLogin = null;
     notifyListeners();
   }
 
   //CARREGA USUÁRIO AO ENTRAR
   Future<void> _loadCurrentUser({User? firebaseUser}) async {
-    final User currentUser = firebaseUser ?? auth.currentUser!;
+    final User currentUser = firebaseUser ?? await auth.currentUser!;
 
     final DocumentSnapshot docUser =
         await firestore.collection('users').doc(currentUser.uid).get();
-
-    //Aqui tenho o usuário
     userLogin = UserLogin.fromDocument(docUser);
+
+    //user.saveToken();
+
+    final docAdmin =
+        await firestore.collection('admins').doc(userLogin?.id).get();
+    if (docAdmin.exists) {
+      userLogin?.admin = true;
+    }
+
+    notifyListeners();
+
+    print(userLogin?.admin);
 
     print(userLogin?.name);
     print(userLogin?.id);
-    notifyListeners();
   }
+
+  //Verifica se o admin está habilitado ou não
+  bool get adminEnable => user != null && userLogin!.admin;
 }

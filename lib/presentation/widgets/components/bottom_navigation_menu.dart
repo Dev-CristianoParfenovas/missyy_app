@@ -10,6 +10,13 @@ class MenuBottomNavigation extends StatefulWidget {
 
 class _MenuBottomNavigationState extends State<MenuBottomNavigation> {
   int currentIndex = 0;
+  final pageController = PageController();
+
+/*  final List<Widget> _pages = [
+    ProductsPage(),
+    CartPage(),
+    // ProfilePage(),
+  ];*/
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +25,11 @@ class _MenuBottomNavigationState extends State<MenuBottomNavigation> {
       onTap: (index) {
         setState(() {
           currentIndex = index;
+          pageController.animateToPage(
+            index,
+            duration: Duration(milliseconds: 700),
+            curve: Curves.ease,
+          );
         });
       },
       type: BottomNavigationBarType.fixed,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:missyy/_core/screen_colors.dart';
 import 'package:missyy/presentation/widgets/components/cart_grid.dart';
+//import '../../../domain/models/product.dart';
 import '../../../utils/utils_services.dart';
 
 class CartPage extends StatefulWidget {
@@ -11,19 +12,11 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  final UtilsServices utilsServices = UtilsServices();
+
   @override
   Widget build(BuildContext context) {
-    final UtilsServices utilsServices = UtilsServices();
-
-    /* void removeItemFromCart(CartItemModel cartItem) {
-    setState(() {
-      cartItems.remove(cartItem);
-      utilsServices.showToast(
-          message: '${product.name} removido(a) do carrinho');
-    });
-  }
-
-  double cartTotalPrice() {
+    /* double cartTotalPrice() {
     double total = 0;
     for (var item in appData.car) {
       total += item.totalPrice();

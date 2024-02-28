@@ -1,11 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:missyy/_core/screen_colors.dart';
+import 'package:missyy/domain/models/user_manager.dart';
 import 'package:missyy/presentation/pages/base/base_screen.dart';
-import 'auth/login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
+import 'auth/login_screen.dart';
 
 class LoadingPage extends StatefulWidget {
-  const LoadingPage({super.key});
+  LoadingPage({super.key});
 
   @override
   State<LoadingPage> createState() => _LoadingPageState();
@@ -13,40 +15,42 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   final Color corPadrao = ScreenColors.corPadraoApp;
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User? _user;
+  UserManager userManager = UserManager();
 
   @override
   void initState() {
     super.initState();
+
     _getUser();
     Future.delayed(const Duration(seconds: 3), () {
       //Get.offNamed(PagesRoutes.signInRoute);
     });
   }
 
-  Future<void> _getUser() async {
-    User? user = _auth.currentUser;
+  _getUser() async {
     setState(() {
+      User? user = _auth.currentUser;
       _user = user;
 
-      // Consumer<UserManager>(builder: (_, userManager, __) {
       if (_user != null) {
         Future.delayed(const Duration(seconds: 3), () {
           Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
-            return const BaseScreen();
+            return BaseScreen();
           }));
         });
-      } else {
+      }
+      if (_user == null) {
         Future.delayed(const Duration(seconds: 3), () {
           Navigator.of(context)
               .pushReplacement(MaterialPageRoute(builder: (ctx) {
             return Login();
           }));
         });
-      } //if
-      // });
+      }
     });
   }
 

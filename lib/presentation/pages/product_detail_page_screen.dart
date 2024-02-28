@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:missyy/_core/screen_colors.dart';
 import 'package:missyy/domain/models/product.dart';
+import 'package:missyy/presentation/pages/cart/cart_page.dart';
 import 'package:missyy/presentation/widgets/components/quantity_widget.dart';
 import 'package:missyy/utils/utils_services.dart';
-
-import 'base/base_screen.dart';
 
 class ProductDetailPage extends StatefulWidget {
   const ProductDetailPage({super.key});
@@ -145,7 +144,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(builder: (ctx) {
-                              return const BaseScreen();
+                              return CartPage();
                             }));
                           },
                           style: ElevatedButton.styleFrom(
